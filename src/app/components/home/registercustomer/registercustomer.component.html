@@ -1,0 +1,82 @@
+
+
+<div class="container col-xl-10 col-xxl-8 px-4 margin">
+    <div class="row  g-lg-1 py-5">
+      <div class="col-lg-6 text-start text-lg-start margintop">
+        <h1 class="text-center"><i class="bi bi-headset"></i></h1> 
+
+        <h1 class="display-4 fw-bold  text-primary">CUSTOMER SERVICE </h1>
+        <p class="fs-1 text-primary" >PORTAL</p>
+        <p class="col-lg-10 fs-4 ">We provide our customer to raise a request if they are facing issue with our portal and they can track and update there details here...</p>
+      <p class="fs-3 text-primary">We are here for you please Register</p>
+      </div>
+      <div class="col-md-10 mx-auto col-lg-6 ">
+        <form class="p-4 p-md-5 border rounded-3 bg-light">
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="firstName" name="firstName" [(ngModel)]="customer.firstName" placeholder="First Name">
+                <label for="floatingInput">First Name</label>
+              </div>
+              <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="lastName" name="lastName" [(ngModel)]="customer.lastName" placeholder="Last Name">
+                <label for="floatingInput">Last Name</label>
+              </div>   
+              <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="panNo" name="panNo" [(ngModel)]="customer.panNo" placeholder="PAN no">
+                <label for="floatingInput">PAN Number</label>
+              </div>  
+              <div class="form-floating mb-3">
+                <input type="date" class="form-control" id="dob" name="dob" [(ngModel)]="customer.dob" placeholder="DOB">
+                <label for="floatingInput">Date Of Birth</label>
+              </div>  
+              <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="contactNo" name="contactNo" [(ngModel)]="customer.contactNo" placeholder="Contact Number">
+                <label for="floatingInput">Contact Number</label>
+              </div>  
+              <label >Address Details</label>
+
+              <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="houseNo" name="houseNo" [(ngModel)]="customer.address.houseNo" placeholder="House Number">
+                <label for="floatingInput">House No</label>
+              </div>  
+
+              <div class="form-floating mb-3">               
+                <select class="form-control" id="country" name="country" [(ngModel)]="customer.address.country" (change)="getState($event)">
+                <option value=""> Select Country</option>
+                <option *ngFor="let country of country" value="{{country.id}}">{{country.name}}</option>
+               </select>
+                <label for="floatingInput">Country</label>
+              </div>  
+
+              <div class="form-floating mb-3">               
+                <select class="form-control" id="state" name="state" [(ngModel)]="customer.address.state" >
+                <option value=""> Select State</option>
+                <option *ngFor="let state of states" >{{state.name}}</option>
+               </select>
+                <label for="floatingInput">State</label>
+              </div>  
+
+            
+              <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="pincode" name="pincode" [(ngModel)]="customer.address.pincode"  placeholder="PinCode">
+                <label for="floatingInput">PinCode</label>
+              </div>  
+
+            <div class="form-floating mb-3">
+                <input type="email" class="form-control" id="email" name="email" [(ngModel)]="customer.email"  placeholder="name@example.com">
+                <label for="floatingInput">Email address</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="password" class="form-control" id="password" name="password" [(ngModel)]="customer.password"  placeholder="Password">
+                <label for="floatingPassword">Password</label>
+            </div>
+            
+            <button class="w-100 btn btn-lg btn-info mb-3" (click)="registerCustomer()" type="submit">Register</button>
+            
+          <hr class="my-4">
+        </form>
+      </div>
+    </div>
+  </div>
+  
+  
+  
