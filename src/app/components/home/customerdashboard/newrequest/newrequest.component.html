@@ -1,0 +1,49 @@
+<app-headerhome></app-headerhome>
+
+<div class="container " style="margin-top: 100px;">
+  <div class="row ">
+    <div class="col-lg-6 shadow p-3 mb-5 bg-white rounded">
+        <h4 class="mb-4">Create New Request</h4>
+     <form class="row g-3" >
+
+        <div class="col-md-6">
+            <label for="inputcategory" class="form-label">Select Category</label>
+            <select id="inputcategory" class="form-select" name="category" [(ngModel)]="customerRequest.category" >
+              <option selected>select category</option>
+              <option *ngFor="let category of categoryselect">{{category}}</option>
+              
+            </select>
+          </div>
+
+  <div class="col-md-6">
+    <label for="inputdate" class="form-label">Date</label>
+    <input type="date" class="form-control" id="inputdate" name="requestdate" [(ngModel)]="customerRequest.requestDate">
+  </div>
+  <div class="col-md-6">
+    <label for="inputstatus" class="form-label">Status</label>
+    <select id="inputStatus" class="form-select" name="requestStatus" [(ngModel)]="customerRequest.requestStatus">
+      <option selected>Pending</option>
+      <option>Completed</option>
+  
+
+    </select>
+  </div>
+
+  <div class="form-floating">
+    <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" name="description" [(ngModel)]="customerRequest.description"></textarea>
+    <label for="floatingTextarea">Description</label>
+  </div>
+
+
+  <div class="col-12">
+    <button class="w-100 btn btn-lg  mb-3" style="background-color: #6c7ae0;color:white" (click)="saveCustomerRequest()" type="submit">Submit Request</button>
+</div>
+</form>
+    </div>
+    <div class="col-lg-6 " >
+      <img src="assets/customer.webp" height="89%" width="90%" class="shadow  mb-5  rounded imageform">
+   
+    </div>
+   
+  </div>
+</div>

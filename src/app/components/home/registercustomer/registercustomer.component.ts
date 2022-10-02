@@ -31,7 +31,7 @@ export class RegistercustomerComponent implements OnInit {
     promise.subscribe((response) => {
       
       this.country = response as Country[];
-      console.log(this.country);
+      // console.log(this.country);
     });
   }
 
@@ -41,7 +41,7 @@ getState(event){
   const observable = this.regiserCustomerService.getStatesByCountryId(this.country_id);
     observable.subscribe(
       (response: any) => {
-        console.log(response);
+        // console.log(response);
         this.states=response;
       },
       function (error) {

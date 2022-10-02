@@ -1,0 +1,28 @@
+
+<app-headerhome></app-headerhome>
+
+<div class="container">
+    <table class="table table-striped " style="margin-top: 100px; " >
+        <thead>
+          <tr style="background-color: #6c7ae0; color: white;" class="">
+          
+            <th scope="col">Request No</th>
+            <th scope="col">category</th>
+            <th scope="col">Date Of Request raised</th>
+            <th scope="col">Status</th>
+            <th scope="col">Discription</th>
+          </tr>
+        </thead>
+        <tbody>
+            <tr></tr>
+            <tr  *ngFor="let request of customerRequestData ">
+               
+                <td>{{ request.requestId }}</td>
+                <td>{{ request.category }}</td>
+                <td>{{ request.requestDate }}</td>
+                <td>{{ request.requestStatus }}</td>
+                <td>{{ request.description }}</td>
+         
+        </tbody>
+      </table>
+</div>

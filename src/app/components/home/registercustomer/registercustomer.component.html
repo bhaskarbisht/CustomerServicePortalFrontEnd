@@ -1,5 +1,5 @@
 
-
+<app-headerhome></app-headerhome>
 <div class="container col-xl-10 col-xxl-8 px-4 margin">
     <div class="row  g-lg-1 py-5">
       <div class="col-lg-6 text-start text-lg-start margintop">
@@ -41,7 +41,7 @@
 
               <div class="form-floating mb-3">               
                 <select class="form-control" id="country" name="country" [(ngModel)]="customer.address.country" (change)="getState($event)">
-                <option value=""> Select Country</option>
+                <option  selected> Select Country</option>
                 <option *ngFor="let country of country" value="{{country.id}}">{{country.name}}</option>
                </select>
                 <label for="floatingInput">Country</label>
@@ -49,7 +49,7 @@
 
               <div class="form-floating mb-3">               
                 <select class="form-control" id="state" name="state" [(ngModel)]="customer.address.state" >
-                <option value=""> Select State</option>
+                <option value="" selected> Select State</option>
                 <option *ngFor="let state of states" >{{state.name}}</option>
                </select>
                 <label for="floatingInput">State</label>
