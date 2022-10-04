@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
+import { ClosedrequestComponent } from './components/home/customerdashboard/closedrequest/closedrequest.component';
 import { CustomerdashboardComponent } from './components/home/customerdashboard/customerdashboard.component';
+import { CustomerprofileComponent } from './components/home/customerdashboard/customerprofile/customerprofile.component';
 import { NewrequestComponent } from './components/home/customerdashboard/newrequest/newrequest.component';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/home/login/login.component';
@@ -12,7 +14,10 @@ const routes: Routes = [
   {path:'register',component:RegistercustomerComponent},
   {path:'login',component:LoginComponent},
   {path:'dashboard',component:CustomerdashboardComponent},
-  {path:'newRequest',component:NewrequestComponent}
+  {path:'newRequest',component:NewrequestComponent},
+  {path:'closedRequest',component:ClosedrequestComponent},
+  {path:'profile',component:CustomerprofileComponent}
+
 
 
     

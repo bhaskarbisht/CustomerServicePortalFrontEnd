@@ -1,0 +1,141 @@
+<app-headerhome></app-headerhome>
+
+
+
+<div class="container " style="margin-top: 100px;">
+  <div class="row ">
+    <div class="col-lg-6 " >
+        <img src="assets/profile.png" height="92%" width="90%" class="shadow rounded imagemargin">
+     
+      </div>
+    <div class="col-lg-6 shadow p-3 mb-5 bg-white rounded formmargin">
+        <h4 class="mb-4 text-center" >Your Profile Details</h4>
+     <form class="row g-3 " >
+          <div class="col-md-6">
+            <label for="firstName" class="form-label">First Name</label>
+            <input type="text" class="form-control" id="firstName" name="firstName" disabled [(ngModel)]="customer.firstName" >
+          </div>
+          <div class="col-md-6">
+            <label for="lastName" class="form-label">Last Name</label>
+            <input type="text" class="form-control" id="lastName" name="lastName"  disabled [(ngModel)]="customer.lastName" >
+          </div>
+
+
+          <div class="col-md-6">
+            <label for="panCard" class="form-label">Pan Card</label>
+            <input type="text" class="form-control" id="pancard" name="pancard" disabled [(ngModel)]="customer.panNo" >
+          </div>
+
+          <div class="col-md-6">
+            <label for="dob" class="form-label">Date Of Birth</label>
+            <input type="date" class="form-control" id="dob" name="dob" disabled [(ngModel)]="customer.dob">
+          </div>
+
+          <div class="col-md-6">
+            <label for="contact" class="form-label">Contact No</label>
+            <input type="text" class="form-control" id="contact" name="contact" disabled [(ngModel)]="customer.contactNo">
+          </div>
+
+         
+
+  <div class="col-md-12">
+    <label for="floatingTextarea">Address</label>
+    <textarea class="form-control"  id="floatingTextarea" name="description" disabled >
+      House No-{{customer.address.houseNo}} State- {{customer.address.state}} ,{{customer.address.country}} PinCode: {{customer.address.pincode}}
+    </textarea>
+  
+  </div>
+
+
+  <div class="col-12">
+    <button class="w-100 btn btn-lg  mb-3" style="background-color: #6c7ae0;color:white" data-bs-toggle="modal" data-bs-target="#exampleModal" type="submit" (click)="getstatesOnload(customer.address.country)" >Update Records  <i class="bi bi-pencil-fill"></i></button>
+</div>
+</form>
+    </div>
+
+   
+  </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header ">
+          <h1 class="modal-title fs-5 " id="exampleModalLabel">Update Profile Details</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          
+
+            <div class="col-lg-12 shadow p-3 mb-5 bg-white rounded ">
+             <form class="row g-3 " >
+                  <div class="col-md-6">
+                    <label for="firstName" class="form-label">First Name</label>
+                    <input type="text" class="form-control" id="firstName" name="firstName"  [(ngModel)]="customer.firstName" >
+                  </div>
+                  <div class="col-md-6">
+                    <label for="lastName" class="form-label">Last Name</label>
+                    <input type="text" class="form-control" id="lastName" name="lastName"   [(ngModel)]="customer.lastName" >
+                  </div>
+        
+        
+                  <div class="col-md-6">
+                    <label for="panCard" class="form-label">Pan Card</label>
+                    <input type="text" class="form-control" id="pancard" name="pancard"  [(ngModel)]="customer.panNo" >
+                  </div>
+        
+                  <div class="col-md-6">
+                    <label for="dob" class="form-label">Date Of Birth</label>
+                    <input type="date" class="form-control" id="dob" name="dob"  [(ngModel)]="customer.dob">
+                  </div>
+        
+                  <div class="col-md-6">
+                    <label for="contact" class="form-label">Contact No</label>
+                    <input type="text" class="form-control" id="contact" name="contact"  [(ngModel)]="customer.contactNo">
+                  </div>
+
+                  <div class="col-md-6"></div>
+                  <div class="col-md-6">
+                    <label for="contact" class="form-label">House No</label>
+                    <input type="text" class="form-control" id="houseNo" name="houseNo"  [(ngModel)]="customer.address.houseNo">
+                  </div>
+               
+                  <div class="col-md-6">  
+                    <label for="country" class="form-label">Country</label>             
+                    <select class="form-control" id="country" name="country" [(ngModel)]="customer.address.country" (change)="getState($event)">
+                    <option  selected> Select Country</option>
+                    <option *ngFor="let country of country" value="{{country.id}}">{{country.name}}</option>
+                   </select>
+                   
+                  </div>  
+    
+                  <div class="col-md-6">    
+                    <label for="state" class="form-label">State</label>                        
+                    <select class="form-control" id="state" name="state" [(ngModel)]="customer.address.state" >
+                    <option  selected> Select State</option>
+                    <option *ngFor="let state of states" value="{{state.stateId}}">{{state.name}}</option>
+                   </select>
+            
+                </div>
+                  <div class="col-md-6">
+                    <label for="pincode" class="form-label">Pin Code</label>
+                    <input type="text" class="form-control" id="Pincode" name="pincode"  [(ngModel)]="customer.address.pincode">
+                  </div>
+        
+                 
+            
+        
+          <div class="col-12">
+            <button class="w-100 btn btn-lg  mb-3" style="background-color: #6c7ae0;color:white" (click)="updateProfile(customer.customerId)" type="submit">Update Records  <i class="bi bi-pencil-fill"></i></button>
+        </div>
+        </form>
+            </div>
+        
+
+        </div>
+       
+      </div>
+    </div>
+  </div>

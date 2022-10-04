@@ -11,8 +11,10 @@ import { CustomerrequestService } from 'src/app/Service/customerrequest.service'
 export class NewrequestComponent implements OnInit {
 
 categoryselect:string[]=['Human Resource(HR)','Payroll','Software','Hardware','security'];
+statusOption:string[]=['Pending','Closed'];
 
 customerRequest: CustomerRequest = new CustomerRequest();
+
 
 saveCustomerRequest(){
   this.customerRequest.customerId=JSON.parse(sessionStorage.getItem('customerId'));
@@ -34,6 +36,9 @@ saveCustomerRequest(){
   constructor(public customerRequestService:CustomerrequestService,public route:Router) { }
 
   ngOnInit(): void {
+
+    this.customerRequest.category="0";
+    this.customerRequest.requestStatus="0";
   }
 
 }

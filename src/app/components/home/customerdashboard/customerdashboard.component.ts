@@ -12,13 +12,15 @@ export class CustomerdashboardComponent implements OnInit {
   customerData: Customer = history.state.data;
   customerId:number;
   customerRequestData:CustomerRequest[];
+  pendingRequest:CustomerRequest[];
 
 getCustomerRequests(){
   this.customerId=JSON.parse(sessionStorage.getItem('customerId'));   
   const promise = this.dashboardService.getCustomerRequest(this.customerId);
   promise.subscribe((response) => {
     this.customerRequestData = response as CustomerRequest[];
-    console.log(this.customerRequestData);
+    this.pendingRequest = this.customerRequestData.filter(item => (item.requestStatus== "Pending"));
+    console.log(this.pendingRequest);
    })
 }
 

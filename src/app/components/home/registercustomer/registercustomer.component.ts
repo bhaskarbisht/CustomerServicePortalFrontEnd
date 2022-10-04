@@ -19,6 +19,7 @@ export class RegistercustomerComponent implements OnInit {
     observable.subscribe(
       (response: any) => {
         console.log(response);
+        alert("Customer Registered Successfully");
       },
       function (error) {
         console.log(error);

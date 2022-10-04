@@ -2,9 +2,9 @@
 <app-headerhome></app-headerhome>
 
 <div class="container">
-    <table class="table table-striped shadow-lg p-3 mb-5 bg-white rounded overflow-hidden" style="margin-top: 100px; " >
+    <table class="table table-striped shadow-lg p-3 mb-5 bg-white rounded overflow-hidden " style="margin-top: 100px; " >
         <thead>
-          <tr style="background-color: #6c7ae0; color: white;" class="">
+          <tr style="background-color: #24e6dc; color: white;" class="">
           
             <th scope="col">Request No</th>
             <th scope="col">category</th>
@@ -15,7 +15,7 @@
         </thead>
         <tbody>
             <tr></tr>
-            <tr  *ngFor="let request of pendingRequest ">
+            <tr  *ngFor="let request of closedRequest ">
                
                 <td>{{ request.requestId }}</td>
                 <td>{{ request.category }}</td>

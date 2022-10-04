@@ -9,7 +9,7 @@
         <div class="col-md-6">
             <label for="inputcategory" class="form-label">Select Category</label>
             <select id="inputcategory" class="form-select" name="category" [(ngModel)]="customerRequest.category" >
-              <option selected>select category</option>
+              <option value="0">select category</option>
               <option *ngFor="let category of categoryselect">{{category}}</option>
               
             </select>
@@ -22,8 +22,7 @@
   <div class="col-md-6">
     <label for="inputstatus" class="form-label">Status</label>
     <select id="inputStatus" class="form-select" name="requestStatus" [(ngModel)]="customerRequest.requestStatus">
-      <option selected>Pending</option>
-      <option>Completed</option>
+      <option *ngFor="let status of statusOption">{{status}}</option>
   
 
     </select>

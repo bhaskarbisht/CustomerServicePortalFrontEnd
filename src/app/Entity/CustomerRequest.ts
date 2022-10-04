@@ -2,7 +2,7 @@ export default class CustomerRequest{
     requestId: number;
     customerId:number;
     category: string;
-    requestStatus: boolean;
+    requestStatus: string;
     requestDate: string;
     description: string;
 }

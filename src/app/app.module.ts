@@ -12,6 +12,8 @@ import { FormsModule } from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import { CustomerdashboardComponent } from './components/home/customerdashboard/customerdashboard.component';
 import { NewrequestComponent } from './components/home/customerdashboard/newrequest/newrequest.component';
+import { ClosedrequestComponent } from './components/home/customerdashboard/closedrequest/closedrequest.component';
+import { CustomerprofileComponent } from './components/home/customerdashboard/customerprofile/customerprofile.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { NewrequestComponent } from './components/home/customerdashboard/newrequ
     LoginComponent,
     RegistercustomerComponent,
     CustomerdashboardComponent,
-    NewrequestComponent
+    NewrequestComponent,
+    ClosedrequestComponent,
+    CustomerprofileComponent
   ],
   imports: [
     BrowserModule,

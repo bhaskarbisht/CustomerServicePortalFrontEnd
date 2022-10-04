@@ -4,7 +4,9 @@ import Customer from '../Entity/Customer';
 
 const CREATE_CUSTOMER_URL = 'http://localhost:8081/createCustomer';
 const COUNTRY_URL = 'http://localhost:8081/countries';
-const STATE_URL='http://localhost:8081/states/'
+const STATE_URL='http://localhost:8081/states/';
+const CUSTOMER_PROFILE_URL='http://localhost:8082/customer/'
+const UPDATE_CUSTOMER_URL='http://localhost:8082/update/'
 
 
 @Injectable({
@@ -27,7 +29,16 @@ export class RegistercustomerService {
   getStatesByCountryId(countryId:number){
     return this.http.get(STATE_URL+countryId);
   }
+//method to get customerProfileById
+  getCustomerById(customerId:number){
+    return this.http.get(CUSTOMER_PROFILE_URL+customerId);
 
+  }
+
+  //update customer Profile details
+  updateCustomer(customer:Customer,id:number) {
+    return this.http.put(UPDATE_CUSTOMER_URL+id, customer);
+  }
 
 
   constructor(public http: HttpClient) { }
