@@ -10,19 +10,19 @@
             <label for="inputcategory" class="form-label">Select Category</label>
             <select id="inputcategory" class="form-select" name="category" [(ngModel)]="customerRequest.category" >
               <option value="0">select category</option>
-              <option *ngFor="let category of categoryselect">{{category}}</option>
+              <option *ngFor="let category of categoryselect" value="{{category}}">{{category}}</option>
               
             </select>
           </div>
 
   <div class="col-md-6">
     <label for="inputdate" class="form-label">Date</label>
-    <input type="date" class="form-control" id="inputdate" name="requestdate" [(ngModel)]="customerRequest.requestDate">
+    <input type="date" class="form-control" id="inputdate" name="requestdate"  [(ngModel)]="customerRequest.requestDate">
   </div>
   <div class="col-md-6">
     <label for="inputstatus" class="form-label">Status</label>
-    <select id="inputStatus" class="form-select" name="requestStatus" [(ngModel)]="customerRequest.requestStatus">
-      <option *ngFor="let status of statusOption">{{status}}</option>
+    <select id="inputStatus" class="form-select" name="requestStatus" disabled [(ngModel)]="customerRequest.requestStatus">
+      <option *ngFor="let status of statusOption" value="{{status}}" >{{status}}</option>
   
 
     </select>

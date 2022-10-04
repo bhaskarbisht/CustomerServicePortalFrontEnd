@@ -15,6 +15,9 @@ export class CustomerprofileComponent implements OnInit {
   states:any;
   country_id:any;
 
+  setcountry:string;
+  setstate:string;
+
 
   getProfile(){
     this.customerId=JSON.parse(sessionStorage.getItem('customerId'));   

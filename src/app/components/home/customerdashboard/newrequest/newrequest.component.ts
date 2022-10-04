@@ -13,7 +13,9 @@ export class NewrequestComponent implements OnInit {
 categoryselect:string[]=['Human Resource(HR)','Payroll','Software','Hardware','security'];
 statusOption:string[]=['Pending','Closed'];
 
+
 customerRequest: CustomerRequest = new CustomerRequest();
+ now:string;
 
 
 saveCustomerRequest(){
@@ -38,7 +40,9 @@ saveCustomerRequest(){
   ngOnInit(): void {
 
     this.customerRequest.category="0";
-    this.customerRequest.requestStatus="0";
+    this.customerRequest.requestStatus="Pending";
+   this.now=new Date().toLocaleDateString();
+  //  alert(this.now);
   }
 
 }

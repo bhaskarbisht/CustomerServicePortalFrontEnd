@@ -4,24 +4,29 @@
 <div class="container">
     <table class="table table-striped shadow-lg p-3 mb-5 bg-white rounded overflow-hidden " style="margin-top: 100px; " >
         <thead>
-          <tr style="background-color: #24e6dc; color: white;" class="">
+          <tr style="background-color: #24e6dc; color: white;" class="text-center">
           
             <th scope="col">Request No</th>
             <th scope="col">category</th>
             <th scope="col">Date Of Request raised</th>
             <th scope="col">Status</th>
             <th scope="col">Discription</th>
+            <th scope="col">Delete</th>
+
+
           </tr>
         </thead>
         <tbody>
             <tr></tr>
-            <tr  *ngFor="let request of closedRequest ">
+            <tr  *ngFor="let request of closedRequest " class="text-center">
                
                 <td>{{ request.requestId }}</td>
                 <td>{{ request.category }}</td>
                 <td>{{ request.requestDate }}</td>
                 <td>{{ request.requestStatus }}</td>
                 <td>{{ request.description }}</td>
+                <td><button class="btn" (click)="deleteClosedRequest(request.requestId)"><i class="bi bi-trash3-fill text-danger"></i> </button></td>
+
          
         </tbody>
       </table>

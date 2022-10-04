@@ -25,6 +25,14 @@ getCustomerClosedRequests(){
    })
 }
 
+deleteClosedRequest(requestId:number){
+  const observable = this.dashboardService.deleteRequest(requestId);
+  observable.subscribe((response: any) => {
+    alert("Request Deleted Successfully");
+    console.log(response);
+    this.ngOnInit();
+  });
+}
 
   constructor(public dashboardService:DashboardService) { }
 
