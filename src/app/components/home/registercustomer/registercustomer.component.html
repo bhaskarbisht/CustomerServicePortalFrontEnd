@@ -11,63 +11,85 @@
       <p class="fs-3 text-primary">We are here for you please Register</p>
       </div>
       <div class="col-md-10 mx-auto col-lg-6 ">
-        <form class="p-4 p-md-5 border rounded-3 bg-light">
+        <form class="p-4 p-md-5 border rounded-3 bg-light"[formGroup]="registerForm" >
             <div class="form-floating mb-3">
-                <input type="text" class="form-control" id="firstName" name="firstName" [(ngModel)]="customer.firstName" placeholder="First Name">
+                <input type="text" class="form-control" id="firstName" name="firstName" formControlName="firstName" [(ngModel)]="customer.firstName" placeholder="First Name">
                 <label for="floatingInput">First Name</label>
+                <span class="error" *ngIf="firstName.invalid && firstName.touched">FirstName is Required</span>
+
               </div>
               <div class="form-floating mb-3">
-                <input type="text" class="form-control" id="lastName" name="lastName" [(ngModel)]="customer.lastName" placeholder="Last Name">
+                <input type="text" class="form-control" id="lastName" name="lastName" formControlName="lastName" [(ngModel)]="customer.lastName" placeholder="Last Name">
                 <label for="floatingInput">Last Name</label>
+                <span class="error" *ngIf="lastName.invalid && lastName.touched">LastName is Required</span>
+
               </div>   
               <div class="form-floating mb-3">
-                <input type="text" class="form-control" id="panNo" name="panNo" [(ngModel)]="customer.panNo" placeholder="PAN no">
+                <input type="text" class="form-control" id="panNo" name="panNo" formControlName="panNo" [(ngModel)]="customer.panNo" placeholder="PAN no">
                 <label for="floatingInput">PAN Number</label>
+                <span class="error" *ngIf="panNo.invalid && panNo.touched">PAN is Required</span>
+
               </div>  
               <div class="form-floating mb-3">
-                <input type="date" class="form-control" id="dob" name="dob" [(ngModel)]="customer.dob" placeholder="DOB">
+                <input type="date" class="form-control" id="dob" name="dob" formControlName="dob" [(ngModel)]="customer.dob" placeholder="DOB" max={{futureDate}}>
                 <label for="floatingInput">Date Of Birth</label>
+                <span class="error" *ngIf="dob.invalid && dob.touched">DOB is Required</span>
+
               </div>  
               <div class="form-floating mb-3">
-                <input type="text" class="form-control" id="contactNo" name="contactNo" [(ngModel)]="customer.contactNo" placeholder="Contact Number">
+                <input type="text" class="form-control" id="contactNo" name="contactNo" formControlName="contactNo" [(ngModel)]="customer.contactNo" placeholder="Contact Number">
                 <label for="floatingInput">Contact Number</label>
+                <span class="error" *ngIf="contactNo.invalid && contactNo.touched">contact is Required</span>
+
               </div>  
               <label >Address Details</label>
 
               <div class="form-floating mb-3">
-                <input type="text" class="form-control" id="houseNo" name="houseNo" [(ngModel)]="customer.address.houseNo" placeholder="House Number">
+                <input type="text" class="form-control" id="houseNo" name="houseNo" formControlName="houseNo" [(ngModel)]="customer.address.houseNo" placeholder="House Number">
                 <label for="floatingInput">House No</label>
+                <span class="error" *ngIf="houseNo.invalid && houseNo.touched">HouseNo is Required</span>
+
               </div>  
 
               <div class="form-floating mb-3">               
-                <select class="form-control" id="country" name="country" [(ngModel)]="customer.address.country" (change)="getState($event)">
+                <select class="form-control" id="country" name="country" formControlName="countryregister" [(ngModel)]="customer.address.country" (change)="getState($event)">
                 <option  selected> Select Country</option>
                 <option *ngFor="let country of country" value="{{country.id}}">{{country.name}}</option>
                </select>
                 <label for="floatingInput">Country</label>
+                <span class="error" *ngIf="countryregister.invalid && countryregister.touched">Country is Required</span>
+
               </div>  
 
               <div class="form-floating mb-3">               
-                <select class="form-control" id="state" name="state" [(ngModel)]="customer.address.state" >
+                <select class="form-control" id="state" name="state" formControlName="state" [(ngModel)]="customer.address.state" >
                 <option value="" selected> Select State</option>
                 <option *ngFor="let state of states" value="{{state.stateId}}">{{state.name}}</option>
                </select>
                 <label for="floatingInput">State</label>
+                <span class="error" *ngIf="state.invalid && state.touched">State is Required</span>
+
               </div>  
 
             
               <div class="form-floating mb-3">
-                <input type="text" class="form-control" id="pincode" name="pincode" [(ngModel)]="customer.address.pincode"  placeholder="PinCode">
+                <input type="text" class="form-control" id="pincode" name="pincode" formControlName="pincode" [(ngModel)]="customer.address.pincode"  placeholder="PinCode">
                 <label for="floatingInput">PinCode</label>
+                <span class="error" *ngIf="pincode.invalid && pincode.touched">Pincode is Required</span>
+
               </div>  
 
             <div class="form-floating mb-3">
-                <input type="email" class="form-control" id="email" name="email" [(ngModel)]="customer.email"  placeholder="name@example.com">
+                <input type="email" class="form-control" id="email" name="email" formControlName="registeremail" [(ngModel)]="customer.email"  placeholder="name@example.com">
                 <label for="floatingInput">Email address</label>
+                <span class="error" *ngIf="registeremail.invalid && registeremail.touched">Email is Required</span>
+
             </div>
             <div class="form-floating mb-3">
-                <input type="password" class="form-control" id="password" name="password" [(ngModel)]="customer.password"  placeholder="Password">
+                <input type="password" class="form-control" id="password" name="password" formControlName="password" [(ngModel)]="customer.password"  placeholder="Password">
                 <label for="floatingPassword">Password</label>
+                <span class="error" *ngIf="password.invalid && password.touched">Password is Required</span>
+
             </div>
             
             <button class="w-100 btn btn-lg btn-info mb-3" (click)="registerCustomer()" type="submit">Register</button>

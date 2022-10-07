@@ -26,6 +26,25 @@ updateRequest(customerRequest:CustomerRequest,requestId:number){
   return this.http.put(UPDATE_PENDING_REQUEST+requestId,customerRequest);
 }
 
+disableFutureDate(){
+  var futureDate;
+  var date:any=new Date();
+  var todayDate:any=date.getDate();
+  var month:any=date.getMonth()+1;
+  var year:any=date.getFullYear();
+  if(todayDate<10){
+    todayDate='0'+todayDate;
+  }
+  if(month<10){
+    month='0'+month;
+  }
+  futureDate=year+"-"+month+"-"+todayDate;
+  //alert(this.futureDate);
+  return futureDate;
+
+}
+
+
 
 
   constructor(public http: HttpClient) { }

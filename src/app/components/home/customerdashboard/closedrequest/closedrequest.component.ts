@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import Customer from 'src/app/Entity/Customer';
 import CustomerRequest from 'src/app/Entity/CustomerRequest';
 import { DashboardService } from 'src/app/Service/dashboard.service';
+import Swal from 'sweetalert2';
 
+declare var jQuery: any;
 @Component({
   selector: 'app-closedrequest',
   templateUrl: './closedrequest.component.html',
@@ -14,6 +16,20 @@ export class ClosedrequestComponent implements OnInit {
   customerId:number;
   customerRequestData:CustomerRequest[];
   closedRequest:CustomerRequest[];
+  requestId:any;
+  categoryselect:string[]=['Human Resource(HR)','Payroll','Software','Hardware','security'];
+  statusOption:string[]=['Pending','Closed'];
+  tableflag:any;
+  recordslength:any;
+
+  fillRequest = {
+    requestId: 0,
+    customerId:0,
+    category: '',
+    requestStatus: '',
+    requestDate: '',
+    description: ''
+  };
 
 getCustomerClosedRequests(){
   this.customerId=JSON.parse(sessionStorage.getItem('customerId'));   
@@ -22,16 +38,60 @@ getCustomerClosedRequests(){
     this.customerRequestData = response as CustomerRequest[];
     this.closedRequest = this.customerRequestData.filter(item => (item.requestStatus== "Closed"));
     console.log(this.closedRequest);
+    this.recordslength=this.closedRequest.length;
+
+    if(this.recordslength!=0){
+      this.tableflag=true;
+     }
+     else{
+      this.tableflag=false;
+     }
    })
 }
+
+fillRequestData(request:CustomerRequest){
+  this.fillRequest=request;
+  console.log("inside fillrequest");
+  console.log(this.fillRequest);
+  }
 
 deleteClosedRequest(requestId:number){
   const observable = this.dashboardService.deleteRequest(requestId);
   observable.subscribe((response: any) => {
-    alert("Request Deleted Successfully");
+    Swal.fire(
+      'Request Deleted Successfully',
+      '',
+      'success'
+    )
     console.log(response);
     this.ngOnInit();
   });
+}
+
+updateClosedRequest(requestId:number){
+  const observable = this.dashboardService.updateRequest(
+    this.fillRequest,
+    requestId
+  );
+  console.log(this.fillRequest);
+  observable.subscribe(
+    (response: any) => {
+      console.log(response);
+      Swal.fire(
+        'Request Updated Successfully',
+        '',
+        'success'
+      )
+
+      jQuery("#butttonclose").click();
+      this.ngOnInit();
+    },
+    function (error) {
+      console.log(error);
+      alert('Request Not Updated');
+    }
+  );
+
 }
 
   constructor(public dashboardService:DashboardService) { }

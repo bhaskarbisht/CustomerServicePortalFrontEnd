@@ -7,19 +7,19 @@
       <div class="collapse navbar-collapse" id="navbarResponsive" *ngIf="!changeHeader">
         <ul class="navbar-nav ms-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="#">Home</a>
+            <a class="nav-link text-primary linkhover" href="#">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#" routerLink="/login">Login</a>
+            <a class="nav-link text-primary linkhover" href="#" routerLink="/login">Login</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">About</a>
+            <a class="nav-link text-primary linkhover" href="#">About</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Services</a>
+            <a class="nav-link text-primary linkhover" href="#">Services</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Contact</a>
+            <a class="nav-link text-primary linkhover " href="#">Contact</a>
           </li>
         </ul>
       </div>
@@ -28,13 +28,13 @@
         <ul class="navbar-nav ms-auto">
         
           <li class="nav-item">
-            <a class="nav-link" href="#" routerLink="/dashboard">Pending Request</a>
+            <a class="nav-link text-primary linkhover"  routerLink="/dashboard">Pending Request</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#" routerLink="/closedRequest">Closed Request</a>
+            <a class="nav-link text-primary linkhover"  routerLink="/closedRequest">Closed Request</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Manage Request</a>
+            <a class="nav-link text-primary linkhover"  routerLink="/newRequest">Submit New Request</a>
           </li>
        
         </ul>
@@ -42,10 +42,10 @@
           <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
             <i class="bi bi-person-circle fs-3 text-primary"></i>      </a>
           <ul class="dropdown-menu text-small">
-            <li><a class="dropdown-item" href="#" routerLink="/newRequest">Submit New Request</a></li>
-            <li><a class="dropdown-item" href="#" routerLink="/profile">Profile</a></li>
+            <li><a class="dropdown-item linkhover" href="#" routerLink="/newRequest">Submit New Request</a></li>
+            <li><a class="dropdown-item linkhover" href="#" routerLink="/profile">Profile</a></li>
             <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item"   (click)="signOutCustomer()">Sign out</a></li>
+            <li><a class="dropdown-item linkhover"   (click)="signOutCustomer()">Sign out</a></li>
           </ul>
         </div>
 

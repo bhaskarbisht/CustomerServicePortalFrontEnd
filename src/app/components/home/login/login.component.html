@@ -10,14 +10,17 @@
 
       </div>
       <div class="col-md-10 mx-auto col-lg-5">
-        <form class="p-4 p-md-5 border rounded-3 bg-light">
+        <form class="p-4 p-md-5 border rounded-3 bg-light" [formGroup]="loginForm">
           <div class="form-floating mb-3">
-            <input type="email" class="form-control" id="email" name="email" [(ngModel)]="loginData.email" placeholder="name@example.com">
+            <input type="email" class="form-control" id="email" name="email" formControlName="loginemail" [(ngModel)]="loginData.email" placeholder="name@example.com">
             <label for="floatingInput">Email address</label>
+          <span class="error" *ngIf="loginemail.invalid && loginemail.touched">Email is Required</span>
           </div>
           <div class="form-floating mb-3">
-            <input type="password" class="form-control" id="password" name="password" [(ngModel)]="loginData.password" placeholder="Password">
+            <input type="password" class="form-control" id="password" name="password" formControlName="password" [(ngModel)]="loginData.password" placeholder="Password">
             <label for="floatingPassword">Password</label>
+            <span class="error" *ngIf="password.invalid && password.touched">Password is Required</span>
+
           </div>
          
           <button class="w-100 btn btn-lg btn-info mb-3" (click)="loginCustomer()" type="submit">LOGIN</button>

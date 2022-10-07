@@ -5,8 +5,9 @@ import Customer from '../Entity/Customer';
 const CREATE_CUSTOMER_URL = 'http://localhost:8081/createCustomer';
 const COUNTRY_URL = 'http://localhost:8081/countries';
 const STATE_URL='http://localhost:8081/states/';
-const CUSTOMER_PROFILE_URL='http://localhost:8082/customer/'
-const UPDATE_CUSTOMER_URL='http://localhost:8082/update/'
+const CUSTOMER_PROFILE_URL='http://localhost:8082/customer/';
+const UPDATE_CUSTOMER_URL='http://localhost:8082/update/';
+const GET_DUPLICATE_URL="http://localhost:8081/checkDuplicate/";
 
 
 @Injectable({
@@ -38,6 +39,10 @@ export class RegistercustomerService {
   //update customer Profile details
   updateCustomer(customer:Customer,id:number) {
     return this.http.put(UPDATE_CUSTOMER_URL+id, customer);
+  }
+
+  checkDuplicateEmailId(email:string){
+    return this.http.post(GET_DUPLICATE_URL,email);
   }
 
 

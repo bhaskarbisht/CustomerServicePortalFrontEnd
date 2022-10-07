@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Country } from 'src/app/Entity/Country';
 import Customer from 'src/app/Entity/Customer';
+import { DashboardService } from 'src/app/Service/dashboard.service';
 import { RegistercustomerService } from 'src/app/Service/registercustomer.service';
+import Swal from 'sweetalert2';
+declare var jQuery: any;
+
 
 @Component({
   selector: 'app-customerprofile',
@@ -17,6 +21,7 @@ export class CustomerprofileComponent implements OnInit {
 
   setcountry:string;
   setstate:string;
+
 
 
   getProfile(){
@@ -39,6 +44,7 @@ export class CustomerprofileComponent implements OnInit {
     });
   }
 
+ 
 getState(event){
   this.country_id=event.target.value;
 
@@ -76,7 +82,12 @@ updateProfile(customerId:number){
   const observable = this.registerCustomerService.updateCustomer(this.customer,customerId);
   observable.subscribe(
     (response: any) => {
-      alert("Customer data Updated successfully");
+      Swal.fire(
+        'Proofile Updated successfully!!',
+        '',
+        'success'
+      )
+      jQuery("#butttonclose").click();
 
       console.log(response);
     },
@@ -89,7 +100,8 @@ updateProfile(customerId:number){
 }
 
 
-  constructor(public registerCustomerService:RegistercustomerService) { }
+
+  constructor(public registerCustomerService:RegistercustomerService,public dashboard:DashboardService) { }
 
   ngOnInit(): void {
     this.getProfile();

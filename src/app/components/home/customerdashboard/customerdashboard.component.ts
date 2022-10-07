@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import Customer from 'src/app/Entity/Customer';
 import CustomerRequest from 'src/app/Entity/CustomerRequest';
 import { DashboardService } from 'src/app/Service/dashboard.service';
+import Swal from 'sweetalert2';
+
+declare var jQuery: any;
 
 @Component({
   selector: 'app-customerdashboard',
@@ -15,6 +19,9 @@ export class CustomerdashboardComponent implements OnInit {
   pendingRequest:CustomerRequest[];
   categoryselect:string[]=['Human Resource(HR)','Payroll','Software','Hardware','security'];
 statusOption:string[]=['Pending','Closed'];
+recordslength:any;
+tableflag:any;
+
 
 fillRequest = {
   requestId: 0,
@@ -33,6 +40,13 @@ getCustomerRequests(){
     this.customerRequestData = response as CustomerRequest[];
     this.pendingRequest = this.customerRequestData.filter(item => (item.requestStatus== "Pending"));
     console.log(this.pendingRequest);
+   this.recordslength=this.pendingRequest.length;
+   if(this.recordslength!=0){
+    this.tableflag=true;
+   }
+   else{
+    this.tableflag=false;
+   }
    })
 }
 
@@ -40,9 +54,14 @@ getCustomerRequests(){
 deletePendingRequest(requestId:number){
   const observable = this.dashboardService.deleteRequest(requestId);
   observable.subscribe((response: any) => {
-    alert("Request Deleted Successfully");
+    Swal.fire(
+      'Request Deleted Successfully',
+      '',
+      'success'
+    )
     console.log(response);
     this.ngOnInit();
+    
   });
 }
 
@@ -61,7 +80,15 @@ updatePendingRequest(requestId:number){
   observable.subscribe(
     (response: any) => {
       console.log(response);
-      alert("Request Updated Successfully");
+      Swal.fire(
+        'Request Updated Successfully',
+        '',
+        'success'
+      )
+
+      jQuery("#butttonclose").click();
+
+
       this.ngOnInit();
     },
     function (error) {
@@ -72,7 +99,8 @@ updatePendingRequest(requestId:number){
 
 }
 
-  constructor( public dashboardService:DashboardService) { }
+
+  constructor( public dashboardService:DashboardService,public route:Router) { }
 
   ngOnInit(): void {
     if(sessionStorage.getItem('customerId')){
@@ -87,12 +115,6 @@ updatePendingRequest(requestId:number){
 
 this.getCustomerRequests();
 
-  
-
-
-
-
-    
   }
 
 }

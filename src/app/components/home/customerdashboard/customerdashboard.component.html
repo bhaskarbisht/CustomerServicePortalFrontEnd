@@ -2,7 +2,7 @@
 <app-headerhome></app-headerhome>
 
 <div class="container">
-    <table class="table table-striped shadow-lg p-3 mb-5 bg-white rounded overflow-hidden" style="margin-top: 100px; " >
+    <table class="table table-striped shadow-lg p-3 mb-5 bg-white rounded overflow-hidden" style="margin-top: 100px; " *ngIf="tableflag">
         <thead>
           <tr style="background-color: #6c7ae0; color: white;" class="text-center">
           
@@ -37,7 +37,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <h1 class="modal-title fs-5" id="exampleModalLabel">Update  Request</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <button type="button" id="butttonclose" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
           <div class="row ">
@@ -84,5 +84,12 @@
       </div>
  
     </div>
+  </div>
+</div>
+
+<div class="container" *ngIf="!tableflag" style="margin-top: 100px; ">
+  <div class="row zerorecord border-2 shadow text-center " style="padding :100px;">
+    <h2 class="text-center text-primary mb-3">No Request Found Please Submit New request</h2>
+    <button type="button" class="btn btn-info" style="width:20% ;margin:auto;" routerLink="/newRequest">Submit New Request</button>
   </div>
 </div>

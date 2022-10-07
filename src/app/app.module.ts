@@ -8,12 +8,13 @@ import { HeaderhomeComponent } from './components/home/headerhome/headerhome.com
 import { FooterhomeComponent } from './components/home/footerhome/footerhome.component';
 import { LoginComponent } from './components/home/login/login.component';
 import { RegistercustomerComponent } from './components/home/registercustomer/registercustomer.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import { CustomerdashboardComponent } from './components/home/customerdashboard/customerdashboard.component';
 import { NewrequestComponent } from './components/home/customerdashboard/newrequest/newrequest.component';
 import { ClosedrequestComponent } from './components/home/customerdashboard/closedrequest/closedrequest.component';
 import { CustomerprofileComponent } from './components/home/customerdashboard/customerprofile/customerprofile.component';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,9 @@ import { CustomerprofileComponent } from './components/home/customerdashboard/cu
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule,
+    Ng2SearchPipeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

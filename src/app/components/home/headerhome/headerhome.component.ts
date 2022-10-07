@@ -23,9 +23,9 @@ signOutCustomer(){
 
 
   ngOnInit(): void {
-    console.log("inside header component"+this.changeHeader);
+    // console.log("inside header component"+this.changeHeader);
   this.changeHeader=   this.logincustomerService.getFlagData();
-  console.log(this.changeHeader);
+  // console.log(this.changeHeader);
   }
 
 }
