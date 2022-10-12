@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
+import { AuthenicateguardGuard } from './authenicateguard.guard';
 import { ClosedrequestComponent } from './components/home/customerdashboard/closedrequest/closedrequest.component';
 import { CustomerdashboardComponent } from './components/home/customerdashboard/customerdashboard.component';
 import { CustomerprofileComponent } from './components/home/customerdashboard/customerprofile/customerprofile.component';
@@ -13,10 +14,10 @@ const routes: Routes = [
   { path: '', component:LoginComponent },
   {path:'register',component:RegistercustomerComponent},
   {path:'login',component:LoginComponent},
-  {path:'dashboard',component:CustomerdashboardComponent},
-  {path:'newRequest',component:NewrequestComponent},
-  {path:'closedRequest',component:ClosedrequestComponent},
-  {path:'profile',component:CustomerprofileComponent}
+  {path:'dashboard',component:CustomerdashboardComponent,canActivate:[AuthenicateguardGuard]},
+  {path:'newRequest',component:NewrequestComponent,canActivate:[AuthenicateguardGuard]},
+  {path:'closedRequest',component:ClosedrequestComponent,canActivate:[AuthenicateguardGuard]},
+  {path:'profile',component:CustomerprofileComponent,canActivate:[AuthenicateguardGuard]}
 
 
 

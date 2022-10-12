@@ -15,6 +15,8 @@ import { NewrequestComponent } from './components/home/customerdashboard/newrequ
 import { ClosedrequestComponent } from './components/home/customerdashboard/closedrequest/closedrequest.component';
 import { CustomerprofileComponent } from './components/home/customerdashboard/customerprofile/customerprofile.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { AuthenicateguardGuard } from './authenicateguard.guard';
+ 
 
 @NgModule({
   declarations: [
@@ -37,7 +39,7 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     ReactiveFormsModule,
     Ng2SearchPipeModule
   ],
-  providers: [],
+  providers: [AuthenicateguardGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

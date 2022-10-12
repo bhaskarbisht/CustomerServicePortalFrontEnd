@@ -37,11 +37,12 @@
 
               </div>  
               <div class="form-floating mb-3">
-                <input type="text" class="form-control" id="contactNo" name="contactNo" formControlName="contactNo" [(ngModel)]="customer.contactNo" placeholder="Contact Number">
+                <input type="text" pattern="[0-9]*" maxlength="10" class="form-control" id="contactNo" name="contactNo" formControlName="contactNo" [(ngModel)]="customer.contactNo" placeholder="Contact Number">
                 <label for="floatingInput">Contact Number</label>
-                <span class="error" *ngIf="contactNo.invalid && contactNo.touched">contact is Required</span>
+                <span class="error" *ngIf="contactNo.invalid && contactNo.touched">Please Enter Correct Contact No</span>
 
-              </div>  
+              </div> 
+   
               <label >Address Details</label>
 
               <div class="form-floating mb-3">
@@ -92,7 +93,7 @@
 
             </div>
             
-            <button class="w-100 btn btn-lg btn-info mb-3" (click)="registerCustomer()" type="submit">Register</button>
+            <button class="w-100 btn btn-lg btn-info mb-3" (click)="validateCustomer()" type="submit">Register</button>
             
           <hr class="my-4">
         </form>

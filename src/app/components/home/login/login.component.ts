@@ -51,6 +51,8 @@ get password(){
             'success'
           )
           this.loginFlag=true;
+          sessionStorage.setItem("isLoggedIn","true");
+
          this.loginCustomerService.setloginFlagData(this.loginFlag);
           this.route.navigate(['/dashboard'], {
             state: { data: this.authorizedUser },

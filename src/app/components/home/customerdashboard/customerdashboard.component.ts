@@ -109,6 +109,7 @@ updatePendingRequest(requestId:number){
   }
   else{
     sessionStorage.setItem("customerId",JSON.stringify(this.customerData.customerId));
+
     console.log("data set to session");
    
   }

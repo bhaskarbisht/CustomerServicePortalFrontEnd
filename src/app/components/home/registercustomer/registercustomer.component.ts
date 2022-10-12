@@ -132,6 +132,28 @@ export class RegistercustomerComponent implements OnInit {
     //alert(this.futureDate);
   }
 
+  validateCustomer(){
+    var email=this.customer.email;
+    const observable = this.regiserCustomerService.checkDuplicateEmailId(
+email    );
+    observable.subscribe(
+      (response: any) => {
+        // alert(response)
+        if(response){
+          Swal.fire('Email ID Already Exist!', '', 'warning');
+
+        }
+        else{
+          this.registerCustomer();
+        }
+       
+      },
+      function (error) {
+        console.log(error);
+      }
+    );
+  }
+
   constructor(
     public regiserCustomerService: RegistercustomerService,
     public route: Router

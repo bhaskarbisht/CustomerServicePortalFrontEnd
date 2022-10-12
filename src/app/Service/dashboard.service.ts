@@ -1,10 +1,15 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import CustomerRequest from '../Entity/CustomerRequest';
+import {environment} from '../../environments/environment';
 
 const CUSTOMER_REQUEST_URL="http://localhost:8082/getCustomerRequest/";
 const DELETE_PENDING_REQUEST="http://localhost:8082/delete/";
 const UPDATE_PENDING_REQUEST="http://localhost:8082/updateRequest/";
+
+// const CUSTOMER_REQUEST_URL=environment.baseUrl+'customerrequest/';
+// const DELETE_PENDING_REQUEST=environment.baseUrl+'deleterequest/';
+// const UPDATE_PENDING_REQUEST=environment.baseUrl+'updaterequest/';
 
 @Injectable({
   providedIn: 'root'

@@ -13,6 +13,7 @@ changeHeader:boolean=false;
 
 signOutCustomer(){
   sessionStorage.clear();
+
   console.log("Logout SuccessFully");
   this.logincustomerService.setloginFlagData(false);
   this.route.navigate(['/login']);
