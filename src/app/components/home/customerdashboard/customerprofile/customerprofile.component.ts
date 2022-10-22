@@ -21,6 +21,7 @@ export class CustomerprofileComponent implements OnInit {
 
   setcountry:string;
   setstate:string;
+  countryName:any;
 
 
 
@@ -30,6 +31,8 @@ export class CustomerprofileComponent implements OnInit {
     promise.subscribe((response) => {
       this.customer = response as Customer;   
       console.log(this.customer);
+    //  this.countryName= this.country.filter(item=>(item.id==parseInt(this.customer.address.country)));
+    //   console.log(this.countryName);
      })
   }
   
@@ -104,8 +107,9 @@ updateProfile(customerId:number){
   constructor(public registerCustomerService:RegistercustomerService,public dashboard:DashboardService) { }
 
   ngOnInit(): void {
-    this.getProfile();
     this.getCountries();
+    this.getProfile();
+   
 
   }
 

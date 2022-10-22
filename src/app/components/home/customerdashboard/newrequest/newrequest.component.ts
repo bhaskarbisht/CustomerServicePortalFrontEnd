@@ -18,6 +18,38 @@ statusOption:string[]=['Pending','Closed'];
 customerRequest: CustomerRequest = new CustomerRequest();
 mindate:any;
 
+validateCustomerRequest(){
+  if(this.customerRequest.category=="0"){
+    Swal.fire(
+      'Please Select category!',
+      '',
+      'warning'
+    )
+  }
+
+  else if(this.customerRequest.requestDate==""){
+    Swal.fire(
+      'Please Select Date!',
+      '',
+      'warning'
+    )
+  }
+
+  else if(this.customerRequest.description==""){
+    Swal.fire(
+      'Please Enter Description',
+      '',
+      'warning'
+    )
+  }
+  else{
+    this.saveCustomerRequest();
+  }
+  
+ 
+
+}
+
 saveCustomerRequest(){
   this.customerRequest.customerId=JSON.parse(sessionStorage.getItem('customerId'));
   const observable = this.customerRequestService.createCustomerRequest(this.customerRequest);
@@ -64,6 +96,7 @@ disablePastDate(){
 
     this.customerRequest.category="0";
     this.customerRequest.requestStatus="Pending";
+    
     this.disablePastDate();
 
   }

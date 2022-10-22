@@ -117,6 +117,25 @@ export class RegistercustomerComponent implements OnInit {
     );
   }
 
+  keyPressNumbers(event) {
+
+    var charCode = (event.which) ? event.which : event.keyCode;
+
+
+    if ((charCode < 48 || charCode > 57)) {
+
+      event.preventDefault();
+
+      return false;
+
+    } else {
+
+      return true;
+
+    }
+
+  }
+
   disableFutureDate() {
     var date: any = new Date();
     var todayDate: any = date.getDate();
@@ -133,25 +152,38 @@ export class RegistercustomerComponent implements OnInit {
   }
 
   validateCustomer(){
-    var email=this.customer.email;
-    const observable = this.regiserCustomerService.checkDuplicateEmailId(
-email    );
-    observable.subscribe(
-      (response: any) => {
-        // alert(response)
-        if(response){
-          Swal.fire('Email ID Already Exist!', '', 'warning');
+  
+      console.log("Form is valid : ", this.registerForm.valid);
+      if(this.registerForm.valid){
+        var email=this.customer.email;
+        const observable = this.regiserCustomerService.checkDuplicateEmailId(
+    email    );
+        observable.subscribe(
+          (response: any) => {
+            // alert(response)
+            if(response){
+              Swal.fire('Email ID Already Exist!', '', 'warning');
+    
+            }
+            else{
+              this.registerCustomer();
+            }
+           
+          },
+          function (error) {
+            console.log(error);
+          }
+        );
 
-        }
-        else{
-          this.registerCustomer();
-        }
-       
-      },
-      function (error) {
-        console.log(error);
       }
-    );
+
+      else{
+        Swal.fire('Please Fill All Details!', '', 'warning');
+      }
+
+
+
+ 
   }
 
   constructor(

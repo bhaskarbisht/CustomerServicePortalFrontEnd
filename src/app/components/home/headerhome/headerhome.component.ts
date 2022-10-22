@@ -8,7 +8,7 @@ import { LogincustomerService } from 'src/app/Service/logincustomer.service';
   styleUrls: ['./headerhome.component.css']
 })
 export class HeaderhomeComponent implements OnInit {
-changeHeader:boolean=false;
+changeHeader:string="false";
 
 
 signOutCustomer(){
@@ -25,7 +25,7 @@ signOutCustomer(){
 
   ngOnInit(): void {
     // console.log("inside header component"+this.changeHeader);
-  this.changeHeader=   this.logincustomerService.getFlagData();
+  this.changeHeader=   sessionStorage.getItem("isLoggedIn");
   // console.log(this.changeHeader);
   }
 
